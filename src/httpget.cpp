@@ -136,13 +136,15 @@ void HTTPGet::handle_read_headers(const boost::system::error_code& err, size_t b
 		if (avail > 0) {
 			// Read in the remaining bytes
 			handle_read_content(err);
-		}
-
-		// Continue reading asynchronously until EOF
-		boost::asio::async_read(socket_, response_,
+		} else {
+			// Continue reading asynchronously until EOF
+			// NOTE: only call async_read IF not calling handle_read_content explicity
+			// otherwise you end up queuing up 2 async_reads which causes some nasty stuff
+			boost::asio::async_read(socket_, response_,
 								boost::asio::transfer_at_least(1),
 								boost::bind(&HTTPGet::handle_read_content, this,
 											boost::asio::placeholders::error));
+		}
 	}
 	else
 	{
