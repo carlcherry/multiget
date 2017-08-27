@@ -15,6 +15,8 @@ AC_CHECK_LIB([boost_program_options], [main])
 # FIXME: Replace `main' with a function in `-lboost_system':
 AC_CHECK_LIB([boost_system], [main])
 AC_CHECK_LIB([boost_regex], [main])
+AC_CHECK_LIB([boost_thread], [main])
+AC_CHECK_LIB([pthread], [main])
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])

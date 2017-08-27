@@ -90,8 +90,9 @@ int main(int argc, char* argv[])
     
     // Take all the chunks and assemble them into a single file (and clean up the temp files)
     concatenate_output(requests, output_file_name);
-    cleanup(requests);
+    cleanup(requests); // delete allocated HTTPGet objects
     
+    // Validate the file size and report the results to the user
     int file_size = getFileSize(output_file_name);
     if (file_size == total_bytes) {
         std::cout << std::endl << "Finished downloading " << args.getURL() << "  - to file " << output_file_name << std::endl;
@@ -119,6 +120,7 @@ void concatenate_output(std::vector<HTTPGet*>& requests, const std::string& outp
     output_file.close();
 }
 
+// Delete the allocated HTTPGet objects
 void cleanup(std::vector<HTTPGet*>& requests)
 {
     for (HTTPGet* request: requests) {
@@ -158,6 +160,7 @@ void downloadInParallel(int num_threads, boost::asio::io_service *io_service)
         for (int i = 0; i < num_threads; i++) {
             threads.push_back(std::thread(run_io_service, io_service));
         }
+        // Wait for all threads to finish
         for (std::thread &t: threads) {
             if (t.joinable()) {
                 t.join();
@@ -166,6 +169,9 @@ void downloadInParallel(int num_threads, boost::asio::io_service *io_service)
     }
 }
 
+/*
+ * Get the size of the specified file in bytes
+ */
 int getFileSize(const std::string& filename)
 {
     struct stat statbuf;

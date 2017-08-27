@@ -8,4 +8,4 @@ multiget_SOURCES = main.cpp \
 	args.h
 
 multiget_CPPFLAGS = -Og -std=c++0x
-multiget_LDADD = $(LDADD) -lpthread -lboost_thread
+multiget_LDADD = $(LDADD)
