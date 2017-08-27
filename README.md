@@ -37,6 +37,6 @@ make
 
 ./multiget [OPTIONS] url
 
-To see the full list of options
+To see the full list of options use the -h command line argument
 
 
