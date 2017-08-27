@@ -16,14 +16,21 @@ boost_thread
 ## Build Information
 
 Required libraries to build are:
+
 libboost-system-dev
+
 libboost-program-options-dev
+
 libboost-regex-dev
+
 libboost-thread-dev
 
 In order to build type the following from the command line:
+
 ./autogen.sh
+
 ./configure
+
 make
 
 ## Usage
