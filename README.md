@@ -34,4 +34,15 @@ make
 
 To see the full list of options use the -h command line argument
 
+## Documentation
+
+If you want to create documentation then do the following:
+
+1. Install doxygen
+
+2. Create a directory name "doc" in the root multiget directory
+
+3. Run this command "doxygen doxygen.config".  Open up index.htlm from doc/html
+
+
 
