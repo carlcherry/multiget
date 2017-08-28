@@ -17,13 +17,8 @@ boost_thread
 
 Required libraries to build are:
 
-libboost-system-dev
-
-libboost-program-options-dev
-
-libboost-regex-dev
-
-libboost-thread-dev
+gcc automake autoconf build-essential
+libboost-dev libboost-system-dev libboost-program-options-dev libboost-regex-dev libboost-thread-dev
 
 In order to build type the following from the command line:
 
